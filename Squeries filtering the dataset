@@ -1,0 +1,71 @@
+select upper('superstore'),lower('superstore') from dual;
+select 10*2/20 from dual;
+select 10*2/20 from superstore;
+select 'venkates' from codes;
+select count(*) from codes;
+select * from superstore;
+desc superstore;
+select country, sum(profit)/sum(sales) from superstore group by country;
+select country,profit,sales,discount,shippingcost,productname,(sales+abs(profit)-(sales*discount/100)-shippingcost) "MRP Rate"  from superstore order by sales desc;
+select productname,(profit-discount) "NET PROFIT" from superstore;
+select productname,customername,country from superstore order by sales desc;
+select country,sales from superstore order by country desc,sales desc;
+select country,sales from superstore order by 1 desc, 2 desc;
+
+select * from employees;
+select * from employees order by salary nulls last;
+select * from superstore;
+select count(*) from superstore;
+select distinct country from superstore order by country;
+select distinct customername from superstore;
+select count(distinct customername) from superstore;
+
+
+select * from superstore;
+select * from superstore where country='India';
+select country,customername,sales from superstore where country='India' and sales<5000 order by sales desc;
+select country,customername,sales from superstore where country='United States' and sales>2000 order by sales desc;
+--i dont know the case sensitivity, so how can i find out that?
+select country,customername,sales from superstore where lower(country)='united states' and sales>2000 order by sales desc;
+
+select country,customername,sales from superstore where 
+select min(sales),max(sales),median(sales) from superstore where country='India';
+select country,min(sales),max(sales),median(sales) from superstore where country in('United States','China') group by country;
+
+select productname,sales,country from superstore where country in ('India','United States','China') order by country desc,sales desc;
+
+select country,sales,productname from superstore where country like 'United%';
+select distinct country,sales,productname from superstore order by country,sales,productname desc;
+
+select distinct country from superstore where country like 'United%';
+
+select distinct productname,sales from superstore where sales between 2000 and 5000 order by sales;
+create table test(customername VARCHAR2(50),country varchar2(50),sales number(10,2));
+insert into test values('john','england',200.32);
+
+select * from test;
+rollback;
+commit;
+select country,customername,sales from test where upper(country)='UNITED STATES';
+--EXPLANATION OF AND,OR ,IN KEY WORDS?
+SELECT count(*) FROM SUPERSTORE where lower(country)='india' and sales between 500 and 1000;
+desc superstore;
+
+
+select * from superstore where lower(country)='india' or lower(country)='united states';
+select * from superstore where lower(country) in ('india','united states');
+select count(*) from superstore where lower(country) in ('india','united states');
+select * from superstore where lower(country) in ('china','japan','australia');
+select count(*) from superstore;
+desc superstore;
+select * from superstore where lower(country) in ('india','china') and sales between 1000 and 2000;
+select country,sales,city from superstore where lower(country) in ('india','china','japan') and sales between 2000 and 3000;
+select country from superstore;
+select distinct country from superstore;
+select count(distinct country)"countries" from superstore;
+-- group by 
+
+
+
+
+
